@@ -2,6 +2,7 @@ if (typeof jQuery == 'undefined') {
     console.log("jQuery library is not found.");
 } else {
     // TODO: Add general library information/comments
+    // TODO: Add grunt/gulp to the project
     var al = {
 
         // Default values
