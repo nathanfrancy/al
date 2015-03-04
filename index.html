@@ -1,18 +1,51 @@
 <!doctype html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.min.css" />
     <link rel="stylesheet" href="al.css" />
 	<script src="lib/jquery-1.11.2.min.js"></script>
     <script src="al.js"></script>
 </head>
 <body>
 
-Title: <input type="text" id="test-title"><br />
-Description: <input type="text" id="test-description"><br />
-Seconds: <input type="text" id="test-seconds"><br />
-
-<button id="infinite-button">Trigger Infinite Alert</button><br />
-<button id="timed-button">Trigger Timed Alert</button><br />
+<div class="container">
+    <h1>al jQuery plugin</h1>
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label for="test-title" class="col-lg-2 control-label">Title</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="test-title" placeholder="Title">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="test-description" class="col-lg-2 control-label">Description</label>
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" id="test-description" placeholder="Description">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="test-description" class="col-lg-2 control-label">Description</label>
+                <div class="col-lg-10">
+                    <select id="test-seconds" class="form-control">
+                        <option>3</option>
+                        <option>5</option>
+                        <option>10</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="button" class="btn btn-default" id="timed-button">Timed Alert</button>
+                    <button type="button" class="btn btn-default" id="infinite-button">Infinite Alert</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
 
 <div id="alBox">
     <div id="alBox-panel">
@@ -25,6 +58,7 @@ Seconds: <input type="text" id="test-seconds"><br />
 
 <script>
     $(document).on("click", "#infinite-button", function(e) {
+        e.preventDefault();
         var test_title = $("#test-title").val() || "Success!";
         var test_description = $("#test-description").val() || "This is an example of an infinite alert. It will remain on the page until it is cancelled manually.";
 
@@ -32,6 +66,7 @@ Seconds: <input type="text" id="test-seconds"><br />
     });
 
     $(document).on("click", "#timed-button", function(e) {
+        e.preventDefault();
         var test_title = $("#test-title").val() || "Success!";
         var test_description = $("#test-description").val() || "This is an example of a timed alert. It will dismiss after the specified seconds.";
         var test_seconds = $("#test-seconds").val() || 3;
