@@ -12,39 +12,44 @@
 <body>
 
 <div class="container">
-    <h1>al jQuery plugin</h1>
-    <form class="form-horizontal">
-        <fieldset>
-            <div class="form-group">
-                <label for="test-title" class="col-lg-2 control-label">Title</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="test-title" placeholder="Title">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="test-description" class="col-lg-2 control-label">Description</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="test-description" placeholder="Description">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="test-description" class="col-lg-2 control-label">Description</label>
-                <div class="col-lg-10">
-                    <select id="test-seconds" class="form-control">
-                        <option>3</option>
-                        <option>5</option>
-                        <option>10</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-10 col-lg-offset-2">
-                    <button type="button" class="btn btn-default" id="timed-button">Timed Alert</button>
-                    <button type="button" class="btn btn-default" id="infinite-button">Infinite Alert</button>
-                </div>
-            </div>
-        </fieldset>
-    </form>
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h1 class="page-header">al jQuery plugin</h1>
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="test-title" class="col-lg-2 control-label">Title</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="test-title" placeholder="Title">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="test-description" class="col-lg-2 control-label">Description</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="test-description" placeholder="Description">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="test-description" class="col-lg-2 control-label">Seconds</label>
+                        <div class="col-lg-10">
+                            <select id="test-seconds" class="form-control">
+                                <option>3</option>
+                                <option>5</option>
+                                <option>10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10 col-lg-offset-2">
+                            <br /><br />
+                            <button type="button" class="btn btn-default pull-left" id="timed-button">Timed Alert</button>
+                            <button type="button" class="btn btn-default pull-right" id="infinite-button">Infinite Alert</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </div>
 
 <div id="alBox">

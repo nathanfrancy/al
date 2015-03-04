@@ -1,6 +1,6 @@
-// Check if jQuery exists. If not, you're kinda up a creek. :)
-if (typeof jQuery != 'undefined') {
-
+if (typeof jQuery == 'undefined') {
+    console.log("jQuery library is not found.");
+} else {
     // TODO: Add general library information/comments
     var al = {
 
@@ -29,15 +29,15 @@ if (typeof jQuery != 'undefined') {
             var self = this;
 
             // Replace the values
-            $(this.selector).find(this.selector+"-title").html(this.title);
-            $(this.selector).find(this.selector+"-description").html(this.description);
+            $(this.selector).find(this.selector + "-title").html(this.title);
+            $(this.selector).find(this.selector + "-description").html(this.description);
 
             // Fade in the alert box
             $(this.selector).fadeIn();
 
             // If seconds isn't "infinite" set a timer to clear the box
             if (this.seconds !== "infinite") {
-                this.timer = setInterval(function() {
+                this.timer = setInterval(function () {
                     self.clear();
                 }, this.seconds * 1000);
             }
@@ -48,14 +48,12 @@ if (typeof jQuery != 'undefined') {
             $(this.selector).fadeOut('slow');
         },
 
-        cancelTimer: function() {
+        cancelTimer: function () {
             clearInterval(this.timer);
             this.timer = null;
         }
 
     };
-} else {
-	console.log("jQuery library is not found.");
 }
 
 $(document).on("click", "#alBox-dismiss", function(e) {
