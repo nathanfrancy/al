@@ -7,14 +7,36 @@
 </head>
 <body>
 
+Title: <input type="text" id="test-title"><br />
+Description: <input type="text" id="test-description"><br />
+Seconds: <input type="text" id="test-seconds"><br />
+
+<button id="infinite-button">Trigger Infinite Alert</button><br />
+<button id="timed-button">Trigger Timed Alert</button><br />
+
 <div id="alBox">
-    <span id="alBox-title"></span>
-    <span id="alBox-description"></span>
+    <div id="alBox-panel">
+        <span id="alBox-title"></span>
+        <span id="alBox-description"></span>
+        <hr />
+        <button id="alBox-dismiss">Dismiss</button>
+    </div>
 </div>
 
 <script>
-    $(document).ready(function() {
-        al.initialize({title: "hello", description: "Hello", seconds: 3});
+    $(document).on("click", "#infinite-button", function(e) {
+        var test_title = $("#test-title").val() || "Success!";
+        var test_description = $("#test-description").val() || "This is an example of an infinite alert. It will remain on the page until it is cancelled manually.";
+
+        al.initialize({title: test_title, description: test_description, seconds: "infinite"});
+    });
+
+    $(document).on("click", "#timed-button", function(e) {
+        var test_title = $("#test-title").val() || "Success!";
+        var test_description = $("#test-description").val() || "This is an example of a timed alert. It will dismiss after the specified seconds.";
+        var test_seconds = $("#test-seconds").val() || 3;
+
+        al.initialize({title: test_title, description: test_description, seconds: test_seconds});
     });
 </script>
 

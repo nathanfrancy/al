@@ -1,15 +1,19 @@
 // Check if jQuery exists. If not, you're kinda up a creek. :)
 if (typeof jQuery != 'undefined') {
 
+    // TODO: Add general library information/comments
     var al = {
 
         // Default values
         title: "ALERT_TITLE",
         description: "ALERT_DESCRIPTION",
         seconds: 5,
+        timer: null,
         selector: "#alBox",
+        // TODO: background color and color overrides
+        // TODO: context colors
 
-        initialize : function (alert) {
+        initialize: function (alert) {
 
             // Set the module variables if present
             this.title = alert.title || this.title;
@@ -18,19 +22,54 @@ if (typeof jQuery != 'undefined') {
             this.selector = alert.selector || this.selector;
 
             // Open the alert box
-            this.open();
+            this.render();
         },
 
-        open : function () {
+        render: function () {
+            var self = this;
+
+            // Replace the values
+            $(this.selector).find(this.selector+"-title").html(this.title);
+            $(this.selector).find(this.selector+"-description").html(this.description);
+
+            // Fade in the alert box
             $(this.selector).fadeIn();
+
+            // If seconds isn't "infinite" set a timer to clear the box
+            if (this.seconds !== "infinite") {
+                this.timer = setInterval(function() {
+                    self.clear();
+                }, this.seconds * 1000);
+            }
         },
 
-        close : function () {
+        clear: function () {
+            this.cancelTimer();
+            $(this.selector).fadeOut('slow');
+        },
 
+        cancelTimer: function() {
+            clearInterval(this.timer);
+            this.timer = null;
         }
 
     };
-}
-else {
+} else {
 	console.log("jQuery library is not found.");
 }
+
+$(document).on("click", "#alBox-dismiss", function(e) {
+    e.preventDefault();
+    al.clear();
+});
+
+$(document).on("click", "#alBox", function(e) {
+    e.preventDefault();
+    if(!$(e.target).is('#alBox-panel')
+        && !$(e.target).is('#alBox-title')
+        && !$(e.target).is('#alBox-description')) {
+
+        // Clear the alert box
+        al.clear();
+    }
+});
