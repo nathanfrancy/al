@@ -41,11 +41,11 @@ $("#alBox").al({
 ##Options
 Here are the current options you can pass the plugin:
 
-| Option | Type |
-| ------ | ----- |
-| title | string |
-| description | string |
-| seconds | float value |
+| Option | Type | Description |
+| ------ | ----- | -----------|
+| title | string | The title bar of your alert |
+| description | string | The more verbose description of the alert. |
+| seconds | float value | The number of seconds your alert will appear. Can also define as "infinite" to stay on screen until dismissal. |
 
 
 ##What else?
