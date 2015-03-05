@@ -21,14 +21,7 @@ Next, download al.js and al.css into your project, and including them in your pa
 In order to show the alert box, you'll need to place the HTML structure on the page somewhere. That structure looks like this:
 
 ```
-<div id="alBox">
-    <div id="alBox-panel">
-        <span id="alBox-title"></span>
-        <span id="alBox-description"></span>
-        <hr />
-        <button id="alBox-dismiss">Dismiss</button>
-    </div>
-</div>
+<div id="alBox"></div>
 ```
 
 *It doesn't really matter where you place it in your page because it will be hidden on page load as long as al.css is loaded too.*
@@ -37,13 +30,23 @@ In order to show the alert box, you'll need to place the HTML structure on the p
 At this point, you're ready to pop an alert up. Just make sure you call the alert **after** the al.js plugin is loaded into the page. A call looks like this:
 
 ```
-al.initialize({
+$("#alBox").al({
     title: "Success!",
     description: "This is an alert demo",
     seconds: 3
 });
 ```
 *All of the options are technically optional, but will give you a customized alert.*
+
+##Options
+Here are the current options you can pass the plugin:
+
+| Option | Type | Description |
+| ------ | ----- | -----------|
+| title | string | The title bar of your alert |
+| description | string | The more verbose description of the alert. |
+| seconds | float value | The number of seconds your alert will appear. Can also define as "infinite" to stay on screen until dismissal. |
+
 
 ##What else?
 If you want to contribute, please fork the project and submit pull requests.

@@ -9,6 +9,7 @@
     background-color: rgba(31, 31, 31, 0.85);
     display: none;
     font-family: 'Roboto', sans-serif;
+    z-index: 1000;
 }
 
 #alBox-panel {
