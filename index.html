@@ -52,22 +52,19 @@
     </div>
 </div>
 
-<div id="alBox">
-    <div id="alBox-panel">
-        <span id="alBox-title"></span>
-        <span id="alBox-description"></span>
-        <hr />
-        <button id="alBox-dismiss">Dismiss</button>
-    </div>
-</div>
+<div id="alBox"></div>
 
 <script>
     $(document).on("click", "#infinite-button", function(e) {
         e.preventDefault();
         var test_title = $("#test-title").val() || "Success!";
-        var test_description = $("#test-description").val() || "This is an example of an infinite alert. It will remain on the page until it is cancelled manually.";
+        var test_description = $("#test-description").val() || "This is an example of an infinite alert. It will remain on the page until it is dismissed.";
 
-        al.initialize({title: test_title, description: test_description, seconds: "infinite"});
+        $("#alBox").al({
+            title: test_title,
+            description: test_description,
+            seconds: "infinite"
+        });
     });
 
     $(document).on("click", "#timed-button", function(e) {
@@ -76,8 +73,13 @@
         var test_description = $("#test-description").val() || "This is an example of a timed alert. It will dismiss after the specified seconds.";
         var test_seconds = $("#test-seconds").val() || 3;
 
-        al.initialize({title: test_title, description: test_description, seconds: test_seconds});
+        $("#alBox").al({
+            title: test_title,
+            description: test_description,
+            seconds: test_seconds
+        });
     });
+
 </script>
 
 </body>
