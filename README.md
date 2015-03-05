@@ -41,6 +41,7 @@ $("#alBox").al({
 ##Options
 Here are the current options you can pass the plugin:
 | Option | Type |
+| ------ | ----- |
 | title | string |
 | description | string |
 | seconds | float value |
