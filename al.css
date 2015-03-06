@@ -16,15 +16,19 @@
     margin: 0 auto;
     width: 300px;
     max-width: 100% !important;
-    background-color: white;
     padding: 20px;
     border-radius: 10px;
     position: relative;
     top: 35px;
     font-weight: 300;
     text-align: center;
-    box-shadow: 0px 0px 15px #fff;
+    box-shadow: 0px 0px 10px #333;
 }
+
+.alBox-panel-default { background-color: white; }
+.alBox-panel-success { background-color: rgba(72, 164, 70, 1); color: white; }
+.alBox-panel-warning { background-color: rgba(205, 196, 81, 1); color: white; }
+.alBox-panel-error { background-color: rgba(164, 70, 70, 1); color: white; }
 
 #alBox-title {
     display: block;
