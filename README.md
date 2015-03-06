@@ -48,10 +48,18 @@ Here are the current options you can pass the plugin:
 
 | Option | Type | Description |
 | ------ | ----- | -----------|
-| title | string | The title bar of your alert |
-| description | string | The more verbose description of the alert. |
+| context | string | default, success, warning, error |
+| text.title | string | The title bar of your alert |
+| text.description | string | The more verbose description of the alert. |
+| text.dismiss | string | The text of the "dismiss" button |
 | seconds | float | The number of seconds your alert will appear. Can also define as "infinite" to stay on screen until dismissal. |
-
+| classes.container | string | Classes to be added to #alBox |
+| classes.panel | string | Classes to be added to #alBox-panel |
+| classes.title | string | Classes to be added to #alBox-title |
+| classes.description | string | Classes to be added to #alBox-description |
+| classes.hr | string | Classes to be added to the hr element above the dismiss button |
+| classes.dismiss | string | Classes to be added to the dismiss button |
+| redirect |  string | URL Location to redirect after the alert is done |
 
 ##What else?
 If you want to contribute, please fork the project and submit pull requests.
