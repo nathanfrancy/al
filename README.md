@@ -36,9 +36,12 @@ At this point, you're ready to pop an alert up. Just make sure you call the aler
 
 ```
 $("#alBox").al({
-    title: "Success!",
-    description: "This is an alert demo",
-    seconds: 3
+    context: "success",
+    text: {
+        title: "Success!",
+        description: "This is an example of an alert"
+    },
+    seconds: 10
 });
 ```
 *All of the options are technically optional, but will give you a customized alert.*
