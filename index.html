@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="lib/bootstrap.min.css" />
-    <link rel="stylesheet" href="al.css" />
+    <link rel="stylesheet" href="src/al.css" />
 	<script src="lib/jquery-1.11.2.min.js"></script>
-    <script src="al.js"></script>
+    <script src="src/al.js"></script>
 </head>
 <body>
 
@@ -33,17 +33,27 @@
                         <label for="test-description" class="col-lg-2 control-label">Seconds</label>
                         <div class="col-lg-10">
                             <select id="test-seconds" class="form-control">
-                                <option>3</option>
-                                <option>5</option>
-                                <option>10</option>
+                                <option value="infinite">infinite</option>
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="test-description" class="col-lg-2 control-label">Context</label>
+                        <div class="col-lg-10">
+                            <select id="test-context" class="form-control">
+                                <option value="default">default</option>
+                                <option value="success">success</option>
+                                <option value="warning">warning</option>
+                                <option value="error">error</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <br /><br />
-                            <button type="button" class="btn btn-default pull-left" id="timed-button">Timed Alert</button>
-                            <button type="button" class="btn btn-default pull-right" id="infinite-button">Infinite Alert</button>
+                            <button type="button" class="btn btn-default pull-left" id="alert-button">Trigger Alert</button>
                         </div>
                     </div>
                 </fieldset>
@@ -55,27 +65,20 @@
 <div id="alBox"></div>
 
 <script>
-    $(document).on("click", "#infinite-button", function(e) {
-        e.preventDefault();
-        var test_title = $("#test-title").val() || "Success!";
-        var test_description = $("#test-description").val() || "This is an example of an infinite alert. It will remain on the page until it is dismissed.";
 
-        $("#alBox").al({
-            title: test_title,
-            description: test_description,
-            seconds: "infinite"
-        });
-    });
-
-    $(document).on("click", "#timed-button", function(e) {
+    $(document).on("click", "#alert-button", function(e) {
         e.preventDefault();
         var test_title = $("#test-title").val() || "Success!";
         var test_description = $("#test-description").val() || "This is an example of a timed alert. It will dismiss after the specified seconds.";
         var test_seconds = $("#test-seconds").val() || 3;
+        var test_context = $("#test-context").val();
 
         $("#alBox").al({
-            title: test_title,
-            description: test_description,
+            context: test_context,
+            text: {
+                title: test_title,
+                description: test_description
+            },
             seconds: test_seconds
         });
     });

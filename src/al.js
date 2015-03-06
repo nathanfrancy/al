@@ -12,33 +12,49 @@ if (typeof jQuery == 'undefined') {
 
             // Define defaults
             var defaults = {
-                title: "ALERT_TITLE",
-                description: "ALERT_DESCRIPTION",
-                seconds: 5
+                context: "default",
+                text: {
+                    title: "TITLE",
+                    description: "DESCRIPTION",
+                    dismiss: "DISMISS"
+                },
+                classes: {
+                    container: "",
+                    panel: "",
+                    title: "",
+                    description: "",
+                    hr: "",
+                    dismiss: ""
+                },
+                seconds: "infinite",
+                redirect: ""
             };
 
             // Build settings, merging defaults and options
-            var settings = $.extend( {}, defaults, options );
+            var settings = $.extend( true, {}, defaults, options );
 
             // Build the alBoxPanel
-            var html  = '<div id="alBox-panel">';
-                html += '<span id="alBox-title"></span>';
-                html += '<span id="alBox-description"></span>';
-                html += '<hr />';
-                html += '<button id="alBox-dismiss">Dismiss</button>';
+            var html  = '<div id="alBox-panel" class="'+ settings.classes.panel +'">';
+                html += '<span id="alBox-title" class="'+ settings.classes.title +'">'+ settings.text.title +'</span>';
+                html += '<span id="alBox-description" class="'+ settings.classes.description +'">'+ settings.text.description +'</span>';
+                html += '<hr class="'+ settings.classes.hr +'"/>';
+                html += '<button id="alBox-dismiss" class="'+ settings.classes.dismiss +'">'+ settings.text.dismiss +'</button>';
                 html += '</div>';
 
             // Place into DOM
             this.html(html);
 
+            $("#alBox-panel").addClass("alBox-panel-" + settings.context);
+
+            if (settings.classes.container != "") {
+                $("#alBox").addClass(settings.classes.container);
+            }
+
             // Add the click handler for the dismiss button
             $("#alBox-dismiss").click(clearAl);
 
+            // Click handler for clicking outside the prompt box
             $("#alBox").click(dismiss);
-
-            // Replace the values
-            this.find("#alBox-title").html(settings.title);
-            this.find("#alBox-description").html(settings.description);
 
             // Fade in the alert box
             this.fadeIn();
@@ -72,12 +88,14 @@ if (typeof jQuery == 'undefined') {
         }
 
         /**
-         * Function that will fade the alert out and remove the HTML structure from the container
+         * Function that will clear the interval, fade the alert out
+         * and remove the HTML structure from the container
          */
         function clearAl() {
             clearInterval(timer);
             $("#alBox").fadeOut();
             $("#alBox").html('');
+
         }
 
     }(jQuery));
