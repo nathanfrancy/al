@@ -13,3 +13,5 @@ node_modules/*
 .idea/jsLibraryMappings.xml
 
 .idea/libraries/al_node_modules.xml
+
+npm-debug.log
