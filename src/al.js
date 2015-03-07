@@ -34,7 +34,7 @@ if (typeof jQuery == 'undefined') {
             var settings = $.extend( true, {}, defaults, options );
 
             // Build the alBoxPanel
-            var html  = '<div id="alBox-panel" class="'+ settings.classes.panel +'">';
+            var html  = '<div id="alBox-panel" class="alBox-panel-' + settings.context + ' ' + settings.classes.panel +'">';
                 html += '<span id="alBox-title" class="'+ settings.classes.title +'">'+ settings.text.title +'</span>';
                 html += '<span id="alBox-description" class="'+ settings.classes.description +'">'+ settings.text.description +'</span>';
                 html += '<hr class="'+ settings.classes.hr +'"/>';
@@ -43,8 +43,6 @@ if (typeof jQuery == 'undefined') {
 
             // Place into DOM
             this.html(html);
-
-            $("#alBox-panel").addClass("alBox-panel-" + settings.context);
 
             if (settings.classes.container != "") {
                 $("#alBox").addClass(settings.classes.container);
